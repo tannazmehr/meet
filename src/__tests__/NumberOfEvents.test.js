@@ -7,7 +7,12 @@ describe('<NumberOfEvents /> component', () => {
     let NumberOfEventsComponent;
 
     beforeEach(() => {
-        NumberOfEventsComponent = render(<NumberOfEvents />);
+        NumberOfEventsComponent = render(
+            <NumberOfEvents
+            currentNOE={32}
+            setCurrentNOE={() => {}}
+            />
+        );
     });
 
     test('renders text input', () => {
