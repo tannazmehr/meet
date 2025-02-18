@@ -30,7 +30,7 @@ export const getEvents = async () => {
 };
 
 export const getAccessToken = async () => {
-    const accessToken = localStorage.getItem('access_token');
+    const accessToken = localStorage.getItem('access_token');   
     const tokenCheck = accessToken && (await checkToken(accessToken));
 
     if (!accessToken || tokenCheck.error) {
@@ -52,10 +52,10 @@ const removeQuery = () => {
     let newurl;
     if (window.history.pushState && window.location.pathname) {
         newurl = window.location.protocol + "//" + window.location.host + window.location.pathname;
-        window.location.pushState("", "", newurl);
+        window.history.pushState("", "", newurl);
     } else {
         newurl = window.location.protocol + "//" + window.location.host;
-        window.location.pushState("", "", newurl);
+        window.history.pushState("", "", newurl);
     }
 };
 
