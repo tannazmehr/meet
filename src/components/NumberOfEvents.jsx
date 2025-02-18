@@ -11,9 +11,10 @@ const NumberOfEvents = ({ currentNOE, setCurrentNOE }) => {
     }
     return (
         <div id="number-of-events">
-            <label>Number of events: </label>
+            <label htmlFor="No-Of-Events">Number of events: </label>
             <input
             type="text"
+            id="No-Of-Events"
             className="number-of-events"
             value={eventCount}
             onChange={handleInputChanged}
@@ -21,6 +22,6 @@ const NumberOfEvents = ({ currentNOE, setCurrentNOE }) => {
         </div>
     );
 
-}
+};
 
 export default NumberOfEvents;
