@@ -1,13 +1,22 @@
 import React, { useState } from "react";
 
-const NumberOfEvents = ({ currentNOE, setCurrentNOE }) => {
+const NumberOfEvents = ({ currentNOE, setCurrentNOE, setErrorAlert }) => {
 
     const [eventCount, setEventCount] = useState(currentNOE);
 
     const handleInputChanged = (event) => {
         const value = event.target.value;
         setEventCount(value);
-        setCurrentNOE(value);
+
+        let errorText;
+        if (isNaN(value) || value <= 0) {
+            errorText = "You can only use numbers bigger than 0."
+        }else{
+            errorText = ""
+            setCurrentNOE(value);
+        }
+        setErrorAlert(errorText);
+
     }
     return (
         <div id="number-of-events">
