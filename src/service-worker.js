@@ -61,3 +61,25 @@ self.addEventListener('message', (event) => {
 });
 
 // Any other custom service worker logic can go here.
+
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', (event) => {
+    event.preventDefault(); // Prevent Chrome’s auto prompt
+    deferredPrompt = event;
+    // Show a custom install button
+    document.getElementById('install-btn').style.display = 'block';
+});
+
+document.getElementById('install-btn').addEventListener('click', () => {
+    if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then(choice => {
+            if (choice.outcome === 'accepted') {
+                console.log('User accepted A2HS');
+            } else {
+                console.log('User dismissed A2HS');
+            }
+            deferredPrompt = null;
+        });
+    }
+});
