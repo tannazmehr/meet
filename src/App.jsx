@@ -3,7 +3,8 @@ import EventList from './components/EventList';
 import CitySearch from './components/CitySearch';
 import NumberOfEvents from './components/NumberOfEvents';
 import { extractLocations, getEvents } from './api';
-import { InfoAlert, ErrorAlert, WarningAlert } from './components/Alert'
+import { InfoAlert, ErrorAlert, WarningAlert } from './components/Alert';
+import CityEventsChart from './components/CityEventsChart';
 
 import './App.css';
 
@@ -38,6 +39,7 @@ function App() {
 
   return (
     <div className="App">
+      <h1>Meet App</h1>
       <div className="alerts-container">
         {infoAlert.length ?  <InfoAlert text={infoAlert} /> : null}
         {errorAlert.length ?  <ErrorAlert text={errorAlert} /> : null}
@@ -52,6 +54,10 @@ function App() {
         currentNOE={currentNOE}
         setCurrentNOE={setCurrentNOE}
         setErrorAlert={setErrorAlert}
+      />
+      <CityEventsChart
+      allLocations={allLocations}
+      events={events}
       />
       <EventList
         events={events}
